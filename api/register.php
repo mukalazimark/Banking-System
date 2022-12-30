@@ -10,12 +10,15 @@ $uResidence=$_POST['uResidence'];
 
 if($uPin===$uCpin){
 $insert=mysqli_query($connect,"INSERT INTO user(AccountId,Name,Sex,Nationality,Pin,Residence) VALUES ('','$uName','$uSex','$uNationality','$uPin','$uResidence')");
-$newAccount=mysqli_query($connect,"SELECT `AccountID` FROM `user` WHERE `Name`=$uName");
+$newAccount=mysqli_query($connect,"SELECT `AccountId` FROM `user` WHERE `Name`=$uName");
 $account=mysqli_query($connect,"INSERT INTO account(AccountNo,Name,Balance) VALUES ('$newAccount','$uName',0)");
 if($insert){
+    $userdata=mysqli_fetch_array($newAccount);
+    $userNum=$userdata['AccountId'];
     echo '
     <script>
-    window.alert("user registered");
+    let userNum='.$userNum.';
+    window.alert("user registered. Account number is: "+userNum);
     window.location.href="../create.html";
     // window.alert("your account number is 
     </script>';

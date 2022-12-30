@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2022 at 04:05 PM
+-- Generation Time: Dec 30, 2022 at 03:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `AccountNo` int(11) NOT NULL,
+  `AccountNo` int(6) NOT NULL,
   `Name` text NOT NULL,
   `Balance` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,10 +39,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`AccountNo`, `Name`, `Balance`) VALUES
-(0, 'marko', 12500),
-(0, 'jane', 150000),
-(0, 'jovia', 5000),
-(0, 'patricia', 0);
+(8, 'marko', 5000),
+(9, 'jane', 7500),
+(10, 'tom', 0),
+(11, 'tom', 0);
 
 -- --------------------------------------------------------
 
@@ -64,17 +64,20 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`AccountId`, `Name`, `Sex`, `Nationality`, `Pin`, `Residence`) VALUES
-(1, 'mukalazi', 'male', 'ugandan', 1234, 'ntinda'),
-(2, 'macmuka', 'female', 'ugandan', 1235, 'banda'),
-(3, 'marko', 'male', 'ugandan', 0, 'lugonjo'),
-(4, 'jane', 'female', 'kenyan', 2222, 'nairobi'),
-(5, 'jovia', 'female', 'nigerian', 4444, 'Abuja'),
-(6, 'tom', 'male', 'ugandan', 1234, 'kamuli'),
-(7, 'patricia', 'female', 'ugandan', 1234, 'busega');
+(8, 'marko', 'male', 'ugangan', 1234, 'kireka'),
+(9, 'jane', 'female', 'kenyan', 8888, 'nairobi'),
+(10, 'tom', 'male', 'american', 5555, 'texas'),
+(11, 'tom', 'male', 'american', 1234, 'texas');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`AccountNo`);
 
 --
 -- Indexes for table `user`
@@ -87,10 +90,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `AccountNo` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `AccountId` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `AccountId` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
